@@ -1,0 +1,224 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(42, 42, 42, 0.95);
+    padding: 0.7rem 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 500px;
+}
+
+.nav-brand {
+    font-size: 1.75rem;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.gradient-text {
+    background: whitesmoke;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    display: none;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+.nav-toggle.active {
+    position: relative;
+    z-index: 1002; /* Ensure it stays on top of the menu */
+}
+
+.toggle-icon {
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: white;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.toggle-icon::before,
+.toggle-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transition: all 0.3s ease;
+}
+
+.toggle-icon::before {
+    transform: translateY(-8px);
+}
+
+.toggle-icon::after {
+    transform: translateY(8px);
+}
+
+
+
+.nav-toggle.active .toggle-icon::before {
+    transform: rotate(45deg) translate(5px, 5px);
+    
+}
+
+.nav-toggle.active .toggle-icon::after {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4f46e5;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #a78bfa;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    background: linear-gradient(45deg, #7c3aed, #4f46e5);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
+
+@media (max-width : 1024px) {
+    .nav-container {
+        gap: 290px;
+    }
+    .nav-list{
+        gap:2rem
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(42, 42, 42, 0.98);
+        padding: 2rem;
+        flex-direction: column;
+        gap: 2rem;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+    }
+
+    .nav-cta {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width : 426px) {
+    .nav-container{
+        gap: 170px;
+    }
+}
+@media (max-width : 376px) {
+    .nav-container{
+        gap: 140px;
+    }
+}
+@media (max-width : 321px) {
+    .nav-container{
+        gap: 90px;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
